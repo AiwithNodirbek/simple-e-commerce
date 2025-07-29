@@ -2,15 +2,17 @@
 
 import Link from "next/link"
 import { Search, Filter, Star, Package, TrendingUp } from "lucide-react"
+import { useState } from "react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 export default function CollectionsPage() {
+  const [activeTab, setActiveTab] = useState("grid")
+  
   const collections = [
     {
       id: "summer-2024",
@@ -200,13 +202,31 @@ export default function CollectionsPage() {
             </div>
           </div>
 
-          <Tabs defaultValue="grid" className="w-full">
-            <TabsList className="mb-6">
-              <TabsTrigger value="grid">Grid View</TabsTrigger>
-              <TabsTrigger value="list">List View</TabsTrigger>
-            </TabsList>
+          <div className="w-full">
+            <div className="mb-6 flex rounded-md bg-muted p-1">
+              <button
+                onClick={() => setActiveTab("grid")}
+                className={`flex-1 rounded-sm px-3 py-1.5 text-sm font-medium transition-all ${
+                  activeTab === "grid"
+                    ? "bg-background text-foreground shadow-sm"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                Grid View
+              </button>
+              <button
+                onClick={() => setActiveTab("list")}
+                className={`flex-1 rounded-sm px-3 py-1.5 text-sm font-medium transition-all ${
+                  activeTab === "list"
+                    ? "bg-background text-foreground shadow-sm"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                List View
+              </button>
+            </div>
 
-            <TabsContent value="grid">
+            {activeTab === "grid" && (
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {collections.map((collection) => (
                   <Link href={`/collections/${collection.id}`} key={collection.id}>
@@ -236,9 +256,9 @@ export default function CollectionsPage() {
                   </Link>
                 ))}
               </div>
-            </TabsContent>
+            )}
 
-            <TabsContent value="list">
+            {activeTab === "list" && (
               <div className="space-y-4">
                 {collections.map((collection) => (
                   <Link href={`/collections/${collection.id}`} key={collection.id}>
@@ -280,8 +300,8 @@ export default function CollectionsPage() {
                   </Link>
                 ))}
               </div>
-            </TabsContent>
-          </Tabs>
+            )}
+          </div>
         </section>
 
         {/* Featured Products from Collections */}
