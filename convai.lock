@@ -1,0 +1,11 @@
+{
+    "agents": {
+        "My Test Agent": {
+            "prod": {
+                "id": "agent_9101k1kddf7zf9mvr2wtrej7ywmk",
+                "hash": "33bbb8fd7acc41768e71109b56e8e741"
+            }
+        }
+    },
+    "tools": {}
+}

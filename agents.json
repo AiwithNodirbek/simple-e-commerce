@@ -1,0 +1,12 @@
+{
+    "agents": [
+        {
+            "name": "My Test Agent",
+            "environments": {
+                "prod": {
+                    "config": "agent_configs/prod/my_test_agent.json"
+                }
+            }
+        }
+    ]
+}

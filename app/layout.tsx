@@ -10,6 +10,7 @@ import { AuthProvider } from "@/components/auth-provider"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Toaster } from "@/components/ui/toaster"
+import VoiceAssistant from "@/components/voice-assistant"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -81,6 +82,13 @@ export default function RootLayout({
                         className="group relative text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
                       >
                         Contact
+                        <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                      </Link>
+                      <Link
+                        href="/voice-assistant"
+                        className="group relative text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                      >
+                        AI Assistant
                         <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full"></span>
                       </Link>
                     </nav>
@@ -173,6 +181,12 @@ export default function RootLayout({
                             className="flex items-center rounded-md p-2 text-sm font-medium hover:bg-muted"
                           >
                             Contact
+                          </Link>
+                          <Link
+                            href="/voice-assistant"
+                            className="flex items-center rounded-md p-2 text-sm font-medium hover:bg-muted"
+                          >
+                            AI Assistant
                           </Link>
                         </nav>
 
@@ -357,6 +371,7 @@ export default function RootLayout({
               </footer>
             </div>
             <Toaster />
+            <VoiceAssistant />
           </AuthProvider>
         </ThemeProvider>
       </body>
